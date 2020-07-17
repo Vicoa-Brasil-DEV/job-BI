@@ -2,7 +2,7 @@ const puppeter = require('puppeteer');
 const cron = require("node-cron");
 const { promisify } = require('util')
 
-cron.schedule("*/5 * * * *", async ()=> {
+cron.schedule("*/3 * * * *", async ()=> {
 
     const sleep = promisify(setTimeout);
 
@@ -16,7 +16,7 @@ cron.schedule("*/5 * * * *", async ()=> {
 
         console.log('Iniciada a Atualização do BI')
        
-        await page.goto('https://app.powerbi.com/groups/a7208dca-3731-457f-9c6c-b4266968aa45/reports/6599c6a7-973b-42ca-828b-cc515032812a/ReportSection');
+        await page.goto('https://app.powerbi.com/groups/3a6265fd-42bd-481d-8e81-ad593f226c00/reports/e446003a-b3bf-42c3-a682-b95664d780a7/ReportSectionf2f1a5a4b9c2d45c063b');
     
     
     
