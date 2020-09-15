@@ -1,14 +1,14 @@
 const puppeter = require('puppeteer');
 const cron = require("node-cron");
 const { promisify } = require('util')
-
-cron.schedule("*/1 * * * *", async ()=> {
+const moment = require('moment');
+cron.schedule("*/5 * * * *", async ()=> {
 
     const sleep = promisify(setTimeout);
 
     let browser = await puppeter.launch({
-        executablePath: "/usr/bin/google-chrome-stable",
-        userDataDir: "/home/junior/.config/google-chrome/Default"
+        executablePath: "/opt/google/chrome/google-chrome",
+        userDataDir: "/home/suporte/.config/google-chrome/Default"
     });
     let page = await browser.newPage();
     try {
@@ -36,13 +36,13 @@ cron.schedule("*/1 * * * *", async ()=> {
         await page.click('button[ng-click="$ctrl.runAction($ctrl.RefreshNow)"]');
         await sleep(1000 * 20);
 
-        console.log('Atualização realizada');
+        console.log(`Atualização realizada, às ${moment().format("DD/MM/YYYY HH:mm:ss")}  `);
         console.log('Próxima Atualização em 5 Minutos');
 
     } catch(err) {
         console.log(err);
     } finally {
-       await browser.close();
+      await browser.close();
     }
 
     
